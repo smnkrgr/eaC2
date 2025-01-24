@@ -42,7 +42,7 @@ namespace Server.Models
             if (!headers.TryGetValue("Authorization", out var encodedMetadata))
                 return null;
 
-            encodedMetadata = encodedMetadata.ToString().Substring(0, 7);
+            encodedMetadata = encodedMetadata.ToString().Substring(7);
             
             var json = Encoding.UTF8.GetString(Convert.FromBase64String(encodedMetadata));
             return JsonConvert.DeserializeObject<AgentMetadata>(json);
